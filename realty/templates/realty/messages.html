@@ -1,0 +1,33 @@
+{% for message in messages %}
+<!-- Button trigger modal -->
+<script>
+// после загрузки страницы
+window.addEventListener('load', function () {
+  // элемент, содержащий контент модального окна (например, имеющий id="modal")
+  const elemModal = document.querySelector('#exampleModal');
+  // активируем элемент в качестве модального окна с параметрами по умолчанию
+  const modal = new bootstrap.Modal(elemModal);
+  // откроем модальное окно
+  modal.show();
+});
+</script>
+ <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body alert {{ message.tags }} alert-dismissible">
+            {{ message }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+

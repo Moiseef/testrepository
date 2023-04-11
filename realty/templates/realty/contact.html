@@ -1,0 +1,145 @@
+{% extends 'realty/base.html' %}
+
+{% block title %}Contact{% endblock %}
+{% block content %}
+
+<!--contact-page-content-start-->
+<section class="pt-4 pt-md-5">
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-xl-10">
+				<!-- Title -->
+				{% for el in ticont %}
+				<h1>{{ el.title }}</h1>
+				<p class="lead mb-0">{{ el.full_text }}</p>
+			    {% endfor %}
+			</div>
+		</div>
+
+		<!-- Contact info -->
+		<div class="row g-4">
+        
+			<!-- Contact item Call us START -->
+			    {% for el in call_us %}
+			<div class="col-md-6 col-xl-4">
+				<div class="card card-body shadow text-center align-items-center h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle mb-2" style="--bs-bg-opacity: .5;"><i class="bi bi-headset fs-5"></i></div>
+					<!-- Title -->
+					<h5>{{ el.title }}</h5>
+					<p>{{ el.text }}</p>
+					<!-- Buttons -->
+					<div class="d-grid gap-3 d-sm-block">
+						<a href="{{ el.link_fph }}"><button class="btn btn-sm btn-primary-soft"><i class="bi bi-phone me-2"></i>{{ el.phone_first }}</button></a>
+						<a href="{{ el.link_sph }}"><button class="btn btn-sm btn-light"><i class="bi bi-telephone me-2"></i>{{ el.phone_second }}</button></a>
+					</div>
+				</div>
+			</div>
+			    {% endfor %}
+			<!-- Contact item END -->
+
+			<!-- Contact item Email us START -->
+			    {% for el in email_us %}
+			<div class="col-md-6 col-xl-4">
+				<div class="card card-body shadow text-center align-items-center h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-circle mb-2"><i class="bi bi-inboxes-fill fs-5"></i></div>
+					<!-- Title -->
+					<h5>{{ el.title }}</h5>
+					<p>{{ el.text }}</p>
+					<!-- Buttons -->
+					<a href="{{ el.link_mail }}" class="btn btn-link text-decoration-underline p-0 mb-0"><i class="bi bi-envelope me-1"></i>{{ el.email_name }}</a>
+				</div>
+			</div>
+			    {% endfor %}
+			<!-- Contact item END -->
+
+			<!-- Contact item Social media START -->
+			    {% for el in social_us %}
+			<div class="col-xl-4 position-relative">
+				<div class="card card-body shadow text-center align-items-center h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-warning bg-opacity-10 text-orange rounded-circle mb-2"><i class="bi bi-globe2 fs-5"></i></div>
+					<!-- Title -->
+					<h5>{{ el.title }}</h5>
+					<p>{{ el.text }}</p>
+					<!-- Buttons -->
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"> <a class="btn btn-sm bg-facebook px-2 mb-0" href="{{ el.link_face }}"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-sm bg-instagram px-2 mb-0" href="{{ el.link_inst }}"><i class="fab fa-fw fa-instagram"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-sm bg-twitter px-2 mb-0" href="{{ el.link_twit }}"><i class="fab fa-fw fa-twitter"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-sm bg-linkedin px-2 mb-0" href="{{ el.link_in }}"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
+					</ul>
+				</div>
+			</div>
+			    {% endfor %}
+			<!-- Contact item END -->
+		</div>
+	</div>
+</section>
+<!--contact-page-content-end-->
+<!--contact form start-->
+<section class="pt-0 pt-lg-5">
+<div class="container">
+    <div class="row g-4 g-lg-5 align-items-center">
+        <div class="col-lg-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98647.11787774278!2d-0.36151130000000004!3d39.407785249999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f4cf0efb06f%3A0xb4a351011f7f1d39!2sValencia!5e0!3m2!1sen!2ses!4v1678720676756!5m2!1sen!2ses" height="350" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-100 h-300px grayscale rounded"></iframe>
+        </div>
+        <!--contact form-->
+		    {% for el in cont_form %}
+        <div class="col-lg-6">
+            <div class="card bg-light p-4">
+               
+
+                <!-- Card header -->
+                <div class="card-header bg-light p-0 pb-3">
+                    <h3 class="mb-0">{{ el.title }}</h3>
+                </div>
+
+            <!-- Card body START -->
+			<div class="card-body p-0">
+				<form method="POST" action="{% url 'contact' %}" class="row g-4">
+					{% csrf_token %}
+					<!-- Name -->
+					<div class="col-md-6">
+						<label class="form-label">{{ el.label_name }}</label>
+						<input name="name" type="text" class="form-control" required>
+					</div>
+					<!-- Email -->
+					<div class="col-md-6">
+						<label class="form-label">{{ el.label_email }}</label>
+						<input name="email" type="email" class="form-control" required>
+					</div>
+					<!-- Mobile number -->
+					<div class="col-12">
+						<label class="form-label">{{ el.label_mobile }}</label>
+						<input name="phone" type="tel" class="form-control" required>
+					</div>
+					<!-- Message -->
+					<div class="col-12">
+						<label class="form-label">{{ el.label_message }}</label>
+						<textarea name="message" class="form-control" rows="3"></textarea>
+					</div>
+					<!-- Checkbox -->
+					<div class="col-12 form-check ms-2">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+						<label class="form-check-label" for="exampleCheck1">
+							{{ el.info }}
+						</label>
+					</div>
+					<!-- Button -->
+					<div class="col-12">
+						<button class="btn btn-dark mb-0" type="submit">{{ el.label_btn }}</button>
+					</div>	
+				</form>
+			</div>
+			<!-- Card body END -->
+            </div>
+        </div>
+		    {% endfor %}
+        <!--contact form end-->
+    </div>
+</div>
+</section>
+<!--contact form end-->
+{% endblock %}

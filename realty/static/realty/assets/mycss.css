@@ -1,0 +1,163 @@
+body {
+font-family: 'DM Sans', sans-serif var(--bs-body-font-family) !important;
+}
+img.logo{
+width: 45.03%;;
+}
+/* header */
+.fixhead{
+position: fixed;
+z-index: 10000;
+width: 100%;
+top: 0;
+background-color: white;
+animation-name: fixhade;
+animation-duration: 1s;
+}
+@keyframes fixhade {
+from{
+top: -50%;
+}
+to{
+top: 0;
+}
+}
+.mtbody{
+margin-top: 100px;
+}
+/* contact */
+.icon-lg {
+width: 3.5rem;
+height: 3.5rem;
+line-height: 3.5rem;
+text-align: center;
+font-size: 1.2rem;
+}
+.bg-linkedin {
+background-color: #238cc8 !important;
+color: #fff !important;
+border: none !important;
+}
+.bg-linkedin:hover, .bg-linkedin:active, .bg-linkedin:focus {
+background-color: #207eb4;
+color: #fff;
+}
+.bg-facebook:hover, .bg-facebook:active, .bg-facebook:focus {
+background-color: #5475bc !important;
+color: #fff !important;
+}
+.bg-facebook {
+background-color: #5d82d1 !important;
+color: #fff !important;
+border: none !important;
+}
+.bg-instagram {
+background: #c22b72 !important;
+color: #fff !important;
+border: none !important;
+}
+.bg-instagram:hover, .bg-instagram:active, .bg-instagram:focus {
+background-color: #af2767 !important;
+color: #fff !important;
+}
+.bg-twitter:hover, .bg-twitter:active, .bg-twitter:focus {
+background-color: #3aacdd !important;
+color: #fff !important;
+}
+.bg-twitter {
+background-color: #40bff5 !important;
+color: #fff !important;
+border: none !important;
+}
+.grayscale {
+-webkit-filter: grayscale(100%);
+filter: grayscale(100%);
+-webkit-transition: all 0.6s ease;
+transition: all 0.6s ease;
+}
+.grayscale:hover {
+filter: none;
+-webkit-filter: grayscale(0%);
+}
+/* test*/
+/* wrape*/
+.wrape {
+overflow: hidden;
+display: block;
+width: 100%;
+height: 262px;
+margin: 0 auto;
+position: relative;
+}
+/* row image*/
+.lenta {
+width: 100%;
+height: 100%;
+position: relative;
+left: 0;
+top: 0;
+}
+/* img slide*/
+img.contslide {
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+}
+img.contslide:nth-child(1){
+left: 0;
+}
+img.contslide:nth-child(2){
+left: 100%;
+}
+img.contslide:nth-child(3){
+left: 200%;
+}
+img.contslide:nth-child(4){
+left: 300%;
+}
+img.contslide:nth-child(5){
+left: 400%;
+}	
+img.contslide:nth-child(6){
+left: 500%;
+}
+/* realty view*/
+
+#mycuttext{
+overflow: hidden;
+text-overflow: ellipsis;
+display: -moz-box;
+-moz-box-orient: vertical;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+line-clamp: 3;
+box-orient: vertical;
+}
+#mycuttext2{
+overflow: hidden;
+text-overflow: ellipsis;
+display: -moz-box;
+-moz-box-orient: vertical;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+line-clamp: 2;
+box-orient: vertical;
+}
+.myview{
+    height: 600px;
+}
+/* list gruop */
+#leftbarmy:not(:first-child){
+display: none;
+   }
+.list-group-borderless .list-group-item {
+border: none !important;
+padding: 0.425rem 0;
+}
+
+
+
+

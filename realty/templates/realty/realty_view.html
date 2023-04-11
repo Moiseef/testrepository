@@ -1,0 +1,193 @@
+{% extends 'realty/base.html' %}
+{% block title %}{{ realty.title }}{% endblock %}
+{% block content %}
+<!--slider main-->
+<div id="{{ realty.id }}" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for m in realty.images.all %}  
+      <div class="carousel-item {% if forloop.counter0 == 0%} active {% endif %}">
+        <img src="{{ m.image.url }}" class="d-block w-100 myview" alt="">
+        <div class="carousel-caption d-none d-md-block">
+
+<!--test card in slide-->
+<div class="row mt-auto justify-content-end z-index-9 cardinslide">
+    <div class="col-md-8 col-xl-6 col-xxl-4 bg-white rounded">
+        <div class="card-body bg-mode rounded p-3 p-md-5 m-2 m-lg-6">
+            <!-- Title -->
+            <h4 class="text-dark">{{ realty.title }}</h4>
+            <!-- Content -->
+            <ul class="nav h6 fw-light nav-divider mb-2 mb-sm-3 text-dark">
+                <li class="nav-item text-info">Price&nbsp;{{ realty.price }}&nbsp;$ per month</li>
+            </ul>
+            <p id="mycuttext" class="mb-3 text-black-50">{{ realty.full_text }}</p>
+            <!-- List -->
+            <ul class="list-inline hstack flex-wrap gap-2 mb-3 text-dark">
+                <li class="list-inline-item h6 fw-normal mb-0">
+                    {{ realty.facilities }}
+                </li>
+            </ul>
+            <!-- Buttons -->
+            <a href="#" class="btn btn-light mb-0">Reserve <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+    </div>
+</div>
+<!--test card in slide end-->
+          </div>
+      </div>
+        {% endfor %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#{{ realty.id }}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#{{ realty.id }}" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  </div>
+<!--slider main end-->  
+
+<!--test art-->
+<section class="pt-5 pb-0">
+	<div class="container">
+		<div class="row g-0 g-lg-5">
+
+			<!-- Left sidebar START -->
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="col-md-6 col-lg-12">
+						<!-- Instructor image START -->
+            <div class="card shadow p-2 mb-4 text-center">
+			{% for p in realty.images.all %} 
+               
+              <div id="leftbarmy" class="rounded-3">
+                <!-- Image -->
+                <img src="{{ p.image.url }}" class="card-img" alt="course image">
+              </div>
+              
+            {% endfor %}
+    
+              <!-- Card body -->
+              <div class="card-body px-3">
+                <!-- Rating -->
+                <ul class="list-inline">
+                  <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                  <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                  <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                  <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                  <li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+                  <li class="list-inline-item ms-2 h6 fw-light mb-0">4.5/5.0</li>
+                </ul>
+				<ul class="list-inline">
+					<li class="list-inline-item ms-3 me-0 small">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-bed text-primary me-1"></i>Rooms:</span>
+						<span>{{ realty.rooms }}</span>
+					</li>
+					<li class="list-inline-item ms-3 me-0 small">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-bath text-primary me-1"></i>Bath rooms:</span>
+						<span>{{ realty.bath_rooms }}</span>
+					</li>
+				</ul>
+                <!-- Social media button -->
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item"> <a class="btn px-2 btn-sm bg-facebook" href="{{ realty.skype }}"><i class="fab fa-fw fa-skype"></i></a> </li>
+                  <li class="list-inline-item"> <a class="btn px-2 btn-sm bg-instagram" href="{{ realty.instagram }}"><i class="fab fa-fw fa-instagram"></i></a> </li>
+                  <li class="list-inline-item"> <a class="btn px-2 btn-sm bg-twitter" href="{{ realty.whatsapp }}"><i class="fab fa-fw fa-whatsapp"></i></a> </li>
+                </ul>
+              </div>
+            </div>
+						<!-- Instructor image END -->
+					</div>
+
+				</div> <!-- Row End -->
+			</div>
+			<!-- Left sidebar END -->
+				
+			<!-- Main content START -->
+			<div class="col-lg-8">
+			
+				<!-- Title -->
+				<h5 class="mb-0 text-info">Price&nbsp;{{ realty.price }}&nbsp;$ per month</h5>
+				<h1 class="mb-0">{{ realty.title }}</h1>
+				<p>Graphic Designer</p>
+				<!-- Content -->
+				<p class="mt-4">{{ realty.full_text }}</p>
+				<!-- Personal info -->
+				<ul class="list-group list-group-borderless">
+					<li class="list-group-item px-0">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-map-marker-alt text-primary me-1 me-sm-3"></i>Address:</span>
+						<span>{{ realty.address }}</span>
+					</li>
+					<li class="list-group-item px-0">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-envelope text-primary me-1 me-sm-3"></i>Email:</span>
+						<span>{{ realty.email }}</span>
+					</li>
+					<li class="list-group-item px-0">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-headphones text-primary me-1 me-sm-3"></i>Phone number:</span>
+						<span>{{ realty.phone }}</span>
+					</li>
+				</ul>
+
+				<!-- Counter START -->
+				<div class="row mt-4 g-3">
+					<!-- Counter item -->
+					<div class="col-sm-6 col-lg-4">
+						<div class="d-flex align-items-center">
+							<span class="icon-lg text-success mb-0 bg-success bg-opacity-10 rounded-3"><i class="fas fa-play"></i></span>
+							<div class="ms-3">
+								<div class="d-flex">
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="10" data-purecounter-delay="200" data-purecounter-duration="0">Facilities</h5>
+									<span class="mb-0 h5">:</span>
+								</div>
+								<p class="mb-0 h6 fw-light">{{ realty.facilities }}</p>
+							</div>
+						</div>
+					</div>
+					<!-- Counter item -->
+					<div class="col-sm-6 col-lg-4">
+						<div class="d-flex align-items-center">
+							<span class="icon-lg text-purple bg-purple bg-opacity-10 rounded-3 mb-0"><i class="fas fa-calendar"></i></span>
+							<div class="ms-3">
+								<div class="d-flex">
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="36" data-purecounter-delay="200" data-purecounter-duration="0">Date</h5>
+									<span class="mb-0 h5">:</span>
+								</div>
+								<p class="mb-0 h6 fw-light">{{ realty.date }}</p>
+							</div>
+						</div>
+					</div>
+					<!-- Counter item -->
+					<div class="col-sm-6 col-lg-4">
+						<div class="d-flex align-items-center">
+							<span class="icon-lg text-orange bg-orange bg-opacity-10 rounded-3 mb-0"><i class="fas fa-users"></i></span>
+							<div class="ms-3">
+								<div class="d-flex">
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="Author" data-purecounter-delay="200" data-purecounter-duration="0">Author</h5>
+									<span class="mb-0 h5">:</span>
+								</div>
+								<p class="mb-0 h6 fw-light">{{ realty.author.username }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Counter END -->
+
+				<!-- Course START -->
+				
+				<!-- Course END -->
+      </div>
+			<!-- Main content END -->
+
+		</div><!-- Row END -->
+		<div class="row">
+			<div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'views-update' realty.id %}"><button type="button" class="btn btn-sm btn-info me-2 ms-2">Edit</button></a>
+                  <a href="{% url 'views-delete' realty.id %}"> <button type="button" class="btn btn-sm btn-danger me-2 ms-2">Delete</button></a>
+                </div>
+              </div>
+		</div>
+	</div>
+</section>
+<!--test art end-->
+{% endblock %}

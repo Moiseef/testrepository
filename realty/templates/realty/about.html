@@ -1,0 +1,51 @@
+{% extends 'realty/base.html' %}
+
+{% block title %}About{% endblock %}
+{% block content %}
+<!--slider start-->
+<!--test slide start-->      
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <!--  <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>-->
+      <div class="carousel-inner"> 
+        {% for el in aboutslide %}           
+        <div class="carousel-item {% if forloop.counter0 == 0%} active {% endif %}" data-bs-interval="3000">
+          <img src="{{ el.slide_image.url }}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ el.title }}</h5>
+            <p>{{ el.text_slide }}</p>
+            <a href="{{ el.link_slide }}"><button type="button" class="btn btn-warning text-white"><span>{{ el.link_text }}</span></button></a> 
+          </div>
+        </div>   
+        {% endfor %}         
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+<!--slide end-->
+<!-- articl start-->
+<div class="container marketing">
+    {% for el in aboutart %}
+<hr class="featurette-divider">
+<div class="row featurette">
+<div id="textartmy" class="col-md-7 {% cycle 'order-md-2' '' as stripe %}">
+<h2 class="featurette-heading">{{ el.title }}&nbsp;<span class="text-muted">{{ el.mutetext }}</span></h2>
+<p class="lead">{{ el.full_text }}</p>
+</div>
+<div class="col-md-5">  
+<img src="{{ el.venue_image.url }}" alt="" class="img-thumbnail">       
+</div>
+</div>
+    {% endfor %}
+</div>
+<!-- articl end-->
+{% endblock %}

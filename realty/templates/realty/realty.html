@@ -1,0 +1,71 @@
+{% extends 'realty/base.html' %}
+
+{% block title %}Portfolio{% endblock %}
+{% block content %}
+<h1>This is Portfolio</h1>
+<!--Realty block start-->
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+ <!-- card realty start-->
+          {% for el in card %}        
+        <div class="col">
+          <div class="card shadow-sm">
+            <!--slide start-->
+        <!--second slide start-->
+        <div id="{{ el.id }}" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner">
+            {% for m in el.images.all %}   
+            <div class="carousel-item {% if forloop.counter0 == 0%} active {% endif %}">
+              <img src="{{ m.image.url }}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}  
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#{{ el.id }}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#{{ el.id }}" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <!--second slide end-->           
+            <!--slide end-->          
+           <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
+            <div class="card-body">
+                <h2>{{ el.title }}</h2>
+                <h4 class="text-info">Price&nbsp; {{ el.price }} &nbsp; $</h4>
+              <p id="mycuttext2" class="card-text">{{ el.full_text }}</p>
+              <ul id="listingf" class="list-inline md-mb-2 text-start">                    
+                <span><strong>Room:</strong>&nbsp;{{ el.rooms }} </span>  
+                <span><strong>Bath Rroom:</strong>&nbsp;{{ el.bath_rooms }} </span>               
+           </ul>
+              <ul id="listingf" class="list-inline md-mb-2 text-start">                    
+                 {{ el.facilities }}                  
+            </ul>
+            <div class="mybtn mb-md-4">
+               <a href="#" class="btn btn-secondary">{{ el.label_btn }}<i class="bi bi-star"></i></a>
+            </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'views' el.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                  <a href="{% url 'views-update' el.id %}"> <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
+                </div>
+                <small class="text-muted">{{ el.date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+ <!-- card realty end-->    
+          {% endfor %}     
+
+
+
+      </div>
+    </div>
+  </div>
+<!--Realty block end-->
+
+<!--secont t-->
+{% endblock %}

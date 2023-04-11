@@ -1,0 +1,12 @@
+{% extends 'realty/base.html' %}
+
+{% block title %}Delete object{% endblock %}
+{% block content %}
+<div class="container marketing teext-center">
+    <h1 class="text-center mt-3 mb-3">Delete objects</h1>
+    <form class="w-50 me-auto ms-auto text-center" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button class="btn btn-danger me-auto ms-auto" type="submit">Delete</button>
+    </form>
+</div>
+{% endblock %}
